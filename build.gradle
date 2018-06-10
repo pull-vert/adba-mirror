@@ -1,0 +1,99 @@
+plugins {
+    id 'java'
+    id 'com.jfrog.bintray' version '1.8.1'
+}
+
+group 'jdk.incubator'
+version '0.01'
+
+repositories {
+	mavenCentral()
+}
+
+sourceCompatibility = 9
+targetCompatibility = 9
+
+afterEvaluate {
+        compileJava {
+            inputs.property("moduleName", "jdk.incubator.adba")
+            doFirst {
+                options.compilerArgs = [
+                        '--module-path', classpath.asPath,
+                ]
+                classpath = files()
+            }
+        }
+}
+
+// Configures publishing of Maven artifacts to Bintray
+
+apply plugin: 'maven'
+apply plugin: 'maven-publish'
+apply plugin: 'com.jfrog.bintray'
+
+// --------------- pom configuration ---------------
+
+def pomConfig = {
+    licenses {
+        license {
+            name "GNU GENERAL PUBLIC LICENSE, Version 2"
+            url "https://www.gnu.org/licenses/old-licenses/gpl-2.0.txt"
+            distribution "repo"
+        }
+    }
+
+    scm {
+        url "http://hg.openjdk.java.net/jdk/sandbox/file/9d3b0eb749a9/src/jdk.incubator.adba"
+    }
+}
+
+// ------------- tasks
+
+task sourcesJar(type: Jar, dependsOn: classes) {
+    classifier = 'sources'
+    from sourceSets.main.allSource
+}
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            from components.java
+            artifact sourcesJar
+            pom.withXml {
+                def root = asNode()
+                root.appendNode('name', project.name)
+                root.appendNode('description', 'ADBA is Asynchronous Database Access, a non-blocking database access api that Oracle is proposing as a Java standard')
+                root.appendNode('url', 'http://hg.openjdk.java.net/jdk/sandbox/file/9d3b0eb749a9/src/jdk.incubator.adba')
+                root.children().last() + pomConfig
+            }
+        }
+    }
+}
+
+bintray {
+    user = project.hasProperty('bintrayUser') ? project.property('bintrayUser') : System.getenv('BINTRAY_USER') //this usually comes from gradle.properties file in ~/.gradle
+    key = project.hasProperty('bintrayApiKey') ? project.property('bintrayApiKey') : System.getenv('BINTRAY_API_KEY') //this usually comes from gradle.properties file in ~/.gradle
+//    user = bintray_user //this usually comes from gradle.properties file in ~/.gradle
+//    key = bintray_api_key //this usually comes from gradle.properties file in ~/.gradle
+    publications = ['maven']
+    pkg {
+        repo = 'adba'
+        name = 'adba'
+        licenses = ['GPL-2.0']
+        vcsUrl = 'https://github.com/pull-vert/adba-mirror.git'
+        version {
+            name = project.version
+            vcsTag = project.version
+            released  = new Date()
+        }
+    }
+}
+
+bintrayUpload.doLast {
+    println("Uploaded $project.name version $project.version")
+}
+
+wrapper {
+    gradleVersion = '4.8'
+    distributionType = Wrapper.DistributionType.ALL
+}
