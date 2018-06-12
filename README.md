@@ -16,7 +16,7 @@ repositories {
 }
 
 dependencies {
-    compile('jdk.incubator:adba:0.01')
+    compile('jdk.incubator:adba:0.03')
 }
 ```
 
@@ -35,14 +35,21 @@ ADBA require JDK 9 or later, it does not have any dependencies outside of Java S
 
 ## Versions
 
+### 0.03
+update to http://hg.openjdk.java.net/jdk/sandbox/file/045b7db933bd/src/jdk.incubator.adba
+
+### 0.02
+Update module-info.java to add `uses jdk.incubator.sql2.DataSourceFactory`
+
 ### 0.01
+First release based on http://hg.openjdk.java.net/jdk/sandbox/file/9d3b0eb749a9/src/jdk.incubator.adba
 
 Built the 10 june 2018
 
 
 ## Build and deployment (note for myself)
 
-* Get ADBA source is available for download from the [OpenJDK sandbox](http://hg.openjdk.java.net/jdk/sandbox/file/9d3b0eb749a9/src/jdk.incubator.adba)
+* Get ADBA source is available for download from the [OpenJDK sandbox](http://hg.openjdk.java.net/jdk/sandbox/file/045b7db933bd/src/jdk.incubator.adba)
 * Put it in this project
 * increment 'version' in [build.gradle](build.gradle)
 * upload to bintray using 'bintrayUpload' task
