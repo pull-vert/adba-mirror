@@ -83,9 +83,9 @@ public enum AdbaType implements SqlType {
      */
     VARCHAR,
     /**
-     * Identifies the generic SQL type {@code LONGVARCHAR}.
+     * Identifies the generic SQL type {@code LONG VARCHAR}.
      */
-    LONGVARCHAR,
+    LONG_VARCHAR,
     /**
      * Identifies the generic SQL type {@code DATE}.
      */
@@ -107,9 +107,9 @@ public enum AdbaType implements SqlType {
      */
     VARBINARY,
     /**
-     * Identifies the generic SQL type {@code LONGVARBINARY}.
+     * Identifies the generic SQL type {@code LONG VARBINARY}.
      */
-    LONGVARBINARY,
+    LONG_VARBINARY,
     /**
      * Identifies the generic SQL value {@code NULL}.
      */
@@ -172,9 +172,9 @@ public enum AdbaType implements SqlType {
      */
     NVARCHAR,
     /**
-     * Identifies the generic SQL type {@code LONGNVARCHAR}.
+     * Identifies the generic SQL type {@code LONG NVARCHAR}.
      */
-    LONGNVARCHAR,
+    LONG_NVARCHAR,
     /**
      * Identifies the generic SQL type {@code NCLOB}.
      */
@@ -185,19 +185,19 @@ public enum AdbaType implements SqlType {
     SQLXML,
 
     /**
-     * Identifies the generic SQL type {@code REF_CURSOR}.
+     * Identifies the generic SQL type {@code REF CURSOR}.
      */
     REF_CURSOR,
 
     /**
-     * Identifies the generic SQL type {@code TIME_WITH_TIMEZONE}.
+     * Identifies the generic SQL type {@code TIME WITH TIME ZONE}.
      */
-    TIME_WITH_TIMEZONE,
+    TIME_WITH_TIME_ZONE,
 
     /**
-     * Identifies the generic SQL type {@code TIMESTAMP_WITH_TIMEZONE}.
+     * Identifies the generic SQL type {@code TIMESTAMP WITH TIME ZONE}.
      */
-    TIMESTAMP_WITH_TIMEZONE;
+    TIMESTAMP_WITH_TIME_ZONE;
 
   
     /**

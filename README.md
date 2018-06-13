@@ -1,10 +1,11 @@
 # adba-mirror
 
-adba-mirror is a GIT mirror for openjdk incubator ADBA: Asynchronous Database Access, a non-blocking database access API that Oracle is proposing as a Java standard
+adba-mirror is a GIT mirror for **openjdk incubator ADBA** Mercurial repository: Asynchronous Database Access, a non-blocking database access API that Oracle is proposing as a Java standard
 
-It is a GIT mirror for openjdk Mercurial repository.
+**DO NOT open pull-requests here, this is just a mirror**
 
-**DO NOT open pull-requests here, this just a mirror**
+It is accessible on github and will be kept updated as much as possible.
+It is used to provide the adba artefact for your Gradle project.
 
 ## How to use ADBA from Gradle
 
@@ -26,7 +27,7 @@ ADBA is Asynchronous Database Access, a non-blocking database access api that
 Oracle is proposing as a Java standard. ADBA was announced at 
 [JavaOne 2016](https://static.rainfocus.com/oracle/oow16/sess/1461693351182001EmRq/ppt/CONF1578%2020160916.pdf) 
 and presented again at [JavaOne 2017](http://www.oracle.com/technetwork/database/application-development/jdbc/con1491-3961036.pdf). 
-The ADBA source is available for download from the [OpenJDK sandbox](http://hg.openjdk.java.net/jdk/sandbox/file/9d3b0eb749a9/src/jdk.incubator.adba) 
+The ADBA source is available for download from the [OpenJDK sandbox](http://hg.openjdk.java.net/jdk/sandbox/file/045b7db933bd/src/jdk.incubator.adba) 
 as part of the OpenJDK project and the JavaDoc is available [here](http://cr.openjdk.java.net/~lancea/8188051/apidoc/jdk.incubator.adba-summary.html). 
 You can get involved in the ADBA specification effort by following the 
 [JDBC Expert Group mailing list](http://mail.openjdk.java.net/pipermail/jdbc-spec-discuss/).
