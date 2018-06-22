@@ -120,7 +120,7 @@ public interface DynamicMultiOperation<T> extends OutOperation<T> {
   public DynamicMultiOperation<T> outParameter(String id, SqlType type);
   
   @Override
-  public DynamicMultiOperation<T> apply(Function<Result.OutParameterMap, ? extends T> processor);
+  public DynamicMultiOperation<T> apply(Function<Result.OutColumn, ? extends T> processor);
 
   @Override
   public DynamicMultiOperation<T> set(String id, Object value);

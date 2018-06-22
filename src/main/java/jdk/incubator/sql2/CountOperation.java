@@ -44,7 +44,7 @@ public interface CountOperation<T> extends Operation<T> {
    * @return this {@link CountOperation}
    * @throws IllegalStateException if this method has been called previously
    */
-  public CountOperation<T> apply(Function<Result.Count, ? extends T> function);
+  public CountOperation<T> apply(Function<Result.RowCount, ? extends T> function);
 
   @Override
   public CountOperation<T> onError(Consumer<Throwable> handler);

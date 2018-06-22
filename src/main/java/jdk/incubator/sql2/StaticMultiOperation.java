@@ -70,7 +70,7 @@ public interface StaticMultiOperation<T> extends OutOperation<T> {
   public StaticMultiOperation<T> onError(Consumer<Throwable> handler);
   
   @Override
-  public StaticMultiOperation<T> apply(Function<Result.OutParameterMap, ? extends T> processor);
+  public StaticMultiOperation<T> apply(Function<Result.OutColumn, ? extends T> processor);
 
   @Override
   public StaticMultiOperation<T> outParameter(String id, SqlType type);

@@ -83,7 +83,7 @@ public interface RowProcessorOperation<T> extends ParameterizedOperation<T> {
    * stream of results of type T
    * @return this RowProcessorOperation
    */
-  public RowProcessorOperation<T> rowProcessor(Flow.Processor<Result.Row, ? extends T> rowToResult);
+  public RowProcessorOperation<T> rowProcessor(Flow.Processor<Result.RowColumn, ? extends T> rowToResult);
   
   /** DRAFT 
    * Subscribe to the stream of Rows returned by this Operation. The result of 
@@ -92,12 +92,12 @@ public interface RowProcessorOperation<T> extends ParameterizedOperation<T> {
    * @param rowSubscriber subscribes to a stream of Result.Rows 
    * @return this RowProcessorOperation
    */
-  public default RowProcessorOperation<T> subscribe(Flow.Subscriber<Result.Row> rowSubscriber) {
+  public default RowProcessorOperation<T> subscribe(Flow.Subscriber<Result.RowColumn> rowSubscriber) {
 
     // create a Row to result Processor that passes the Rows to rowSubscriber
     // and publishes a single null as its only result.
-    Flow.Processor<Result.Row, T> rowToResult
-            = new Flow.Processor<Result.Row, T>() {
+    Flow.Processor<Result.RowColumn, T> rowToResult
+            = new Flow.Processor<Result.RowColumn, T>() {
 
       protected boolean isResultPending = false;
       protected long resultDemand = 0;
@@ -132,7 +132,7 @@ public interface RowProcessorOperation<T> extends ParameterizedOperation<T> {
       }
 
       @Override
-      public void onNext(Result.Row item) {
+      public void onNext(Result.RowColumn item) {
         rowSubscriber.onNext(item);
       }
 
