@@ -6,7 +6,7 @@ plugins {
 }
 
 group 'jdk.incubator'
-version '0.03'
+version '0.04'
 
 repositories {
 	mavenCentral()
@@ -39,7 +39,7 @@ def pomConfig = {
     }
 
     scm {
-        url "http://hg.openjdk.java.net/jdk/sandbox/file/045b7db933bd/src/jdk.incubator.adba"
+        url "http://hg.openjdk.java.net/jdk/sandbox/file/JDK-8188051-branch/src/jdk.incubator.adba"
     }
 }
 
@@ -59,7 +59,7 @@ publishing {
                 def root = asNode()
                 root.appendNode('name', project.name)
                 root.appendNode('description', 'ADBA is Asynchronous Database Access, a non-blocking database access api that Oracle is proposing as a Java standard')
-                root.appendNode('url', 'http://hg.openjdk.java.net/jdk/sandbox/file/045b7db933bd/src/jdk.incubator.adba')
+                root.appendNode('url', 'http://hg.openjdk.java.net/jdk/sandbox/file/JDK-8188051-branch/src/jdk.incubator.adba')
                 root.children().last() + pomConfig
             }
         }
