@@ -24,6 +24,6 @@
  */
 module jdk.incubator.adba {
     requires static transitive java.logging;
-    uses jdk.incubator.sql2.DataSourceFactory;
     exports jdk.incubator.sql2;
+    uses jdk.incubator.sql2.DataSourceFactory;
 }

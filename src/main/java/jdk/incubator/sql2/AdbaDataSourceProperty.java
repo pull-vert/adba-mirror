@@ -1,5 +1,5 @@
 /*
- * Copyright (c)  2017, 2018, Oracle and/or its affiliates. All rights reserved.
+ * Copyright (c)  2018, Oracle and/or its affiliates. All rights reserved.
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
  *
  * This code is free software; you can redistribute it and/or modify it
@@ -22,34 +22,56 @@
  * or visit www.oracle.com if you need additional information or have any
  * questions.
  */
+
 package jdk.incubator.sql2;
 
-import java.time.Duration;
-import java.util.function.Consumer;
 import java.util.function.Function;
 
 /**
- * An {@link Operation} that returns a count.
- *
- * @param <T> the type of the result of the {@link Operation}
- * @see ParameterizedRowCountOperation
+ * Properties that apply to the DataSource as a whole, not to the individual
+ * {@link Session}s that the {@link DataSource} creates.
  */
-public interface RowCountOperation<T> extends Operation<T> {
+public enum AdbaDataSourceProperty implements DataSourceProperty {
+  
+ 
+  MAX_RESOURCES(Integer.class,
+                v -> v instanceof Integer && (int) v >= 0,
+                Integer.MAX_VALUE,
+                false),
+  
+  MAX_IDLE_RESOURCES(Integer.class,
+                v -> v instanceof Integer && (int) v >= 0,
+                Integer.MAX_VALUE,
+                false);
 
-  /**
-   * Sets the result processor for this {@link Operation}.
-   * 
-   * @param function processes the count produced by executing this
-   * {@link Operation} and returns the result
-   * @return this {@link RowCountOperation}
-   * @throws IllegalStateException if this method has been called previously
-   */
-  public RowCountOperation<T> apply(Function<Result.RowCount, ? extends T> function);
+  private final Class<?> range;
+  private final Function<Object, Boolean> validator;
+  private final Object defaultValue;
+  private final boolean isSensitive;
+
+  private AdbaDataSourceProperty(Class<?> range, 
+          Function<Object, Boolean> validator,
+          Object value,
+          boolean isSensitive) {
+    this.range = range;
+    this.validator = validator;
+    this.defaultValue = value;
+    this.isSensitive = isSensitive;
+  }
+  
+  @Override
+  public Class<?> range() {
+    return range;
+  }
 
   @Override
-  public RowCountOperation<T> onError(Consumer<Throwable> handler);
+  public Object defaultValue() {
+    return defaultValue;
+  }
 
   @Override
-  public RowCountOperation<T> timeout(Duration minTime);
+  public boolean isSensitive() {
+    return isSensitive;
+  }
   
 }

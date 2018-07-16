@@ -6,7 +6,7 @@ plugins {
 }
 
 group 'jdk.incubator'
-version '0.05'
+version '0.06'
 
 repositories {
 	mavenCentral()
@@ -90,6 +90,6 @@ bintrayUpload.doLast {
 }
 
 wrapper {
-    gradleVersion = '4.8'
+    gradleVersion = '4.8.1'
     distributionType = Wrapper.DistributionType.ALL
 }
