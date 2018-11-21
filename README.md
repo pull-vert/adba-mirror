@@ -17,7 +17,7 @@ repositories {
 }
 
 dependencies {
-    compile('jdk.incubator:adba:0.06')
+    compile('jdk.incubator:adba:0.07')
 }
 ```
 
@@ -34,6 +34,9 @@ You can get involved in the ADBA specification effort by following the
 ADBA require JDK 9 or later, it does not have any dependencies outside of Java SE.
 
 ## Versions
+
+### 0.07
+2018-11-21 : new update from http://hg.openjdk.java.net/jdk/sandbox/file/JDK-8188051-branch/src/jdk.incubator.adba
 
 ### 0.06
 2018-07-16 : new update from http://hg.openjdk.java.net/jdk/sandbox/file/JDK-8188051-branch/src/jdk.incubator.adba
